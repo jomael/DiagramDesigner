@@ -1,8 +1,8 @@
 object MainForm: TMainForm
-  Left = 561
+  Left = 260
   Top = 170
-  Width = 698
-  Height = 478
+  Width = 999
+  Height = 625
   Caption = 'MainForm'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -27,14 +27,14 @@ object MainForm: TMainForm
   object Splitter1: TSplitter
     Left = 121
     Top = 50
-    Height = 373
+    Height = 529
     ResizeStyle = rsUpdate
     OnMoved = Splitter1Moved
   end
   object Splitter2: TSplitter
-    Left = 495
+    Left = 804
     Top = 50
-    Height = 373
+    Height = 529
     Align = alRight
     ResizeStyle = rsUpdate
   end
@@ -42,7 +42,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 50
     Width = 121
-    Height = 373
+    Height = 529
     Align = alLeft
     HideSelection = False
     Indent = 19
@@ -60,7 +60,7 @@ object MainForm: TMainForm
   object ToolBar1: TToolBar
     Left = 0
     Top = 26
-    Width = 682
+    Width = 991
     Height = 24
     AutoSize = True
     Color = clBtnFace
@@ -83,58 +83,58 @@ object MainForm: TMainForm
       Style = tbsDropDown
     end
     object SaveButton: TToolButton
-      Left = 61
+      Left = 59
       Top = 0
       Action = SaveAction
     end
     object Separator1: TToolButton
-      Left = 84
+      Left = 82
       Top = 0
       Width = 8
       ImageIndex = 1
       Style = tbsSeparator
     end
     object ToolButton4: TToolButton
-      Left = 92
+      Left = 90
       Top = 0
       Action = CutAction
     end
     object ToolButton6: TToolButton
-      Left = 115
+      Left = 113
       Top = 0
       Action = CopyAction
     end
     object ToolButton7: TToolButton
-      Left = 138
+      Left = 136
       Top = 0
       Action = PasteAction
     end
     object Separator2: TToolButton
-      Left = 161
+      Left = 159
       Top = 0
       Width = 8
       ImageIndex = 0
       Style = tbsSeparator
     end
     object ToolButton9: TToolButton
-      Left = 169
+      Left = 167
       Top = 0
       Action = UndoAction
     end
     object ToolButton10: TToolButton
-      Left = 192
+      Left = 190
       Top = 0
       Action = RedoAction
     end
     object Separator3: TToolButton
-      Left = 215
+      Left = 213
       Top = 0
       Width = 8
       ImageIndex = 2
       Style = tbsSeparator
     end
     object ZoomBox: TComboBox
-      Left = 223
+      Left = 221
       Top = 0
       Width = 63
       Height = 21
@@ -156,68 +156,68 @@ object MainForm: TMainForm
         '800%')
     end
     object ToolButtonZoom: TToolButton
-      Left = 286
+      Left = 284
       Top = 0
       Action = ZoomAction
       Grouped = True
       Style = tbsCheck
     end
     object ToolButton13: TToolButton
-      Left = 309
+      Left = 307
       Top = 0
       Action = MoveCanvasAction
       Style = tbsCheck
     end
     object ToolButton14: TToolButton
-      Left = 332
+      Left = 330
       Top = 0
       Action = MouseEditAction
       Style = tbsCheck
     end
     object Separator4: TToolButton
-      Left = 355
+      Left = 353
       Top = 0
       Width = 8
       ImageIndex = 15
       Style = tbsSeparator
     end
     object ToolButton15: TToolButton
-      Left = 363
+      Left = 361
       Top = 0
       Action = DrawLineAction
     end
     object ToolButton16: TToolButton
-      Left = 386
+      Left = 384
       Top = 0
       Action = DrawArrowAction
     end
     object ToolButton17: TToolButton
-      Left = 409
+      Left = 407
       Top = 0
       Action = DrawConnectorAction
     end
     object ToolButton18: TToolButton
-      Left = 432
+      Left = 430
       Top = 0
       Action = DrawCurveAction
     end
     object ToolButton2: TToolButton
-      Left = 455
+      Left = 453
       Top = 0
       Action = DrawTextAction
     end
     object ToolButton20: TToolButton
-      Left = 478
+      Left = 476
       Top = 0
       Action = DrawRectangleAction
     end
     object ToolButton21: TToolButton
-      Left = 501
+      Left = 499
       Top = 0
       Action = DrawEllipseAction
     end
     object Separator5: TToolButton
-      Left = 524
+      Left = 522
       Top = 0
       Width = 8
       ImageIndex = 23
@@ -225,7 +225,7 @@ object MainForm: TMainForm
     end
     object LineWidthButton: TSpeedButton
       Tag = -1
-      Left = 532
+      Left = 530
       Top = 0
       Width = 23
       Height = 22
@@ -270,7 +270,7 @@ object MainForm: TMainForm
     end
     object CornerRadiusButton: TSpeedButton
       Tag = -1
-      Left = 555
+      Left = 553
       Top = 0
       Width = 23
       Height = 22
@@ -306,7 +306,7 @@ object MainForm: TMainForm
       Transparent = False
     end
     object LineColorButton: TSpeedButton
-      Left = 578
+      Left = 576
       Top = 0
       Width = 23
       Height = 22
@@ -351,7 +351,7 @@ object MainForm: TMainForm
     end
     object FillColorButton: TSpeedButton
       Tag = 16777215
-      Left = 601
+      Left = 599
       Top = 0
       Width = 23
       Height = 22
@@ -395,7 +395,7 @@ object MainForm: TMainForm
       Transparent = False
     end
     object TextColorButton: TSpeedButton
-      Left = 624
+      Left = 622
       Top = 0
       Width = 23
       Height = 22
@@ -442,25 +442,26 @@ object MainForm: TMainForm
   object ActionMainMenuBar: TActionMainMenuBar
     Left = 0
     Top = 0
-    Width = 682
+    Width = 991
     Height = 26
     UseSystemFont = False
     ActionManager = ActionManager
-    ColorMap.HighlightColor = clWhite
+    ColorMap.HighlightColor = 14410210
     ColorMap.BtnSelectedColor = clBtnFace
-    ColorMap.UnusedColor = clWhite
+    ColorMap.UnusedColor = 14410210
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -12
     Font.Name = 'Segoe UI'
     Font.Style = []
+    PersistentHotKeys = True
     Spacing = 0
   end
   object TemplateScrollBox: TScrollBox
-    Left = 498
+    Left = 807
     Top = 50
     Width = 184
-    Height = 373
+    Height = 529
     Hint = 'Template palette - drag objects from here to diagram'
     HorzScrollBar.Tracking = True
     VertScrollBar.Tracking = True
@@ -486,8 +487,8 @@ object MainForm: TMainForm
   object DrawPanel: TPanel
     Left = 124
     Top = 50
-    Width = 371
-    Height = 373
+    Width = 680
+    Height = 529
     Align = alClient
     BevelOuter = bvNone
     BorderStyle = bsSingle
@@ -543,8 +544,8 @@ object MainForm: TMainForm
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 423
-    Width = 682
+    Top = 579
+    Width = 991
     Height = 19
     Panels = <
       item

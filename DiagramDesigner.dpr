@@ -1,3 +1,4 @@
+
 program DiagramDesigner;
 
 uses

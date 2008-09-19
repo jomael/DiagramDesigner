@@ -41,186 +41,219 @@ type
   TDiagramContainer = class; // Forward
 
   TCanvasInfo = object
-                  // Set by caller
-                  Offset               : TPoint;
-                  Scale                : TFloatPoint;
-                  DrawMode             : (dmEditing,dmPreview,dmRender);
-                  ZBuffer              : TBitmap;
-                  DefaultFont          : TFont;
-                  DisableFontSmoothing : Boolean; // Not fully implemented
-                  PageIndex            : Integer;
-                  Container            : TDiagramContainer;
-                  function CanvasPoint(const Point: TPoint): TPoint; overload;
-                  function CanvasPoint(const X,Y: Double): TPoint; overload;
-                  function ObjectPoint(const Point: TPoint): TPoint;
-                  function CanvasRect(const Rect: TRect): TRect;
-                  function CanvasRect1(const Rect: TRect): TRect;
-                  function ObjectRect(const Rect: TRect): TRect;
-                end;
+		// Set by caller
+		Offset               : TPoint;
+		Scale                : TFloatPoint;
+		DrawMode             : (dmEditing,dmPreview,dmRender);
+		ZBuffer              : TBitmap;
+		DefaultFont          : TFont;
+		DisableFontSmoothing : Boolean; // Not fully implemented
+		PageIndex            : Integer;
+		Container            : TDiagramContainer;
+		function CanvasPoint(const Point: TPoint): TPoint; overload;
+		function CanvasPoint(const X, Y: Double):  TPoint; overload;
+		function ObjectPoint(const Point: TPoint): TPoint;
+		function CanvasRect (const Rect: TRect): TRect;
+		function CanvasRect1(const Rect: TRect): TRect;
+		function ObjectRect (const Rect: TRect): TRect;
+	end;
 
-  TObjectProperty = (opName,opPosition,
-                     opAnchors,opScalingAnchorsOnly,
-                     opLineWidth,opLineColor,opFillColor,
-                     opLineStart,opLineEnd,opLineStyle,
-                     opCornerRadius,
-                     opTextXAlign,opTextYAlign,opBlockAlignOnly,
-                     opMargin,
-                     opText,opTextColor,
-                     opCustomLinks,opRectangleType,opBoundsOptions,
-                     opAngle,
-                     opBitmap,opAlphaBitmap,opMetafile,opHalftoneStretch,opAlphaValue,
-                     opCurveType);
-  TObjectProperties = set of TObjectProperty;
+	TObjectProperty = (
+		opName,
+		opPosition,
+		opAnchors,
+		opScalingAnchorsOnly,
+		opLineWidth,
+		opLineColor,
+		opFillColor,
+		opLineStart,
+		opLineEnd,
+		opLineStyle,
+		opCornerRadius,
+		opTextXAlign,
+		opTextYAlign,
+		opBlockAlignOnly,
+		opMargin,
+		opText,
+		opTextColor,
+		opCustomLinks,
+		opRectangleType,
+		opBoundsOptions,
+		opAngle,
+		opBitmap,
+		opAlphaBitmap,
+		opMetafile,
+		opHalftoneStretch,
+		opAlphaValue,
+		opCurveType
+	);
+	
+	TObjectProperties = set of TObjectProperty;
 
-  TObjectAnchors = set of (oaLeft,oaRight,oaTop,oaBottom,oaHorzScale,oaVertScale);
-  PObjectAnchors = ^TObjectAnchors;
+	TObjectAnchors = set of (oaLeft,oaRight,oaTop,oaBottom,oaHorzScale,oaVertScale);
+	PObjectAnchors = ^TObjectAnchors;
 
-  PFloatPointArray = ^TFloatPointArray;
+	PFloatPointArray = ^TFloatPointArray;
 
-  TBaseObjectList = class; // Forward
+	TBaseObjectList = class; // Forward
 
-  TBaseObjectClass = class of TBaseObject;
-  TBaseObject = class(TStreamClass)
-    protected
-      FPosition : TRect;
-      FSelected : Boolean;
-      FNotifyObjects : TObjectList;
-      FOwner : TBaseObjectList;
-      //procedure SetPosition(const Position: TRect); virtual;
-      function GetProperty(Index: TObjectProperty): Integer; virtual;
-      procedure SetProperty(Index: TObjectProperty; Value: Integer); virtual;
-      // Notification of link object movement
-      function ObjectMoved(LinkObject: TBaseObject): Boolean; virtual;
-      // Notification of link object deletion
-      procedure ObjectDeleted(LinkObject: TBaseObject); virtual;
-      // Notification of link point deletion
-      procedure LinkPointDeleted(LinkObject: TBaseObject; LinkIndex: Integer); virtual;
-      // Notify all FNotifyObjects of deleted link point
-      procedure NotifyLinkPointDeleted(LinkIndex: Integer);
-      // Recalculate links to other objects
-      procedure ResetLinkIndices; virtual;
-      procedure ResetLinkObjects; virtual;
-    public
-      Links : TFloatPointArray;
-      Name : string;
-      Anchors : TObjectAnchors;
-      TreeNode : TObject;
-      property Owner: TBaseObjectList read FOwner;
-      constructor CreateNew(PropertyObject: TBaseObject=nil); virtual; abstract;
-      destructor Destroy; override;
-      function CreateCopy: TBaseObject; virtual; abstract;
-      procedure Assign(Other: TObject); override;
+	TBaseObjectClass = class of TBaseObject;
+	
+	TBaseObject = class(TStreamClass)
+	protected
+		FPosition : TRect;
+		FSelected : Boolean;
+		FNotifyObjects : TObjectList;
+		FOwner : TBaseObjectList;
+		//procedure SetPosition(const Position: TRect); virtual;
+		function GetProperty(Index: TObjectProperty): Integer; virtual;
+		procedure SetProperty(Index: TObjectProperty; Value: Integer); virtual;
+		// Notification of link object movement
+		function ObjectMoved(LinkObject: TBaseObject): Boolean; virtual;
+		// Notification of link object deletion
+		procedure ObjectDeleted(LinkObject: TBaseObject); virtual;
+		// Notification of link point deletion
+		procedure LinkPointDeleted(LinkObject: TBaseObject; LinkIndex: Integer); virtual;
+		// Notify all FNotifyObjects of deleted link point
+		procedure NotifyLinkPointDeleted(LinkIndex: Integer);
+		// Recalculate links to other objects
+		procedure ResetLinkIndices; virtual;
+		procedure ResetLinkObjects; virtual;
+	public
+		Links : TFloatPointArray;
+		Name : string;
+		Anchors : TObjectAnchors;
+		TreeNode : TObject;
+		property Owner: TBaseObjectList read FOwner;
+		constructor CreateNew(PropertyObject: TBaseObject=nil); virtual; abstract;
+		destructor Destroy; override;
+		function CreateCopy: TBaseObject; virtual; abstract;
+		procedure Assign(Other: TObject); override;
 
-      function GetBounds: TRect; virtual;
-      property Position: TRect read FPosition write FPosition;
-      property Top: Integer read FPosition.Top;
-      property Left: Integer read FPosition.Left;
-      function Width: Integer;
-      function Height: Integer;
+		function GetBounds: TRect; virtual;
+		property Position: TRect read FPosition write FPosition;
+		property Top: Integer read FPosition.Top;
+		property Left: Integer read FPosition.Left;
+		function Width: Integer;
+		function Height: Integer;
 
-      property Selected: Boolean read FSelected write FSelected;
+		property Selected: Boolean read FSelected write FSelected;
 
-      procedure Draw(Canvas: TCanvas; const CanvasInfo: TCanvasInfo; Index: Integer); virtual;
-      procedure DrawSelected(Canvas: TCanvas; const CanvasInfo: TCanvasInfo; Index: Integer); virtual;
+		procedure Draw(Canvas: TCanvas; const CanvasInfo: TCanvasInfo; Index: Integer); virtual;
+		procedure DrawSelected(Canvas: TCanvas; const CanvasInfo: TCanvasInfo; Index: Integer); virtual;
 
-      function ValidProperties: TObjectProperties; virtual;
-      property Properties[PropertyIndex: TObjectProperty]: Integer read GetProperty write SetProperty; default;
-      function Hint: string; virtual;
+		function ValidProperties: TObjectProperties; virtual;
+		property Properties[PropertyIndex: TObjectProperty]: Integer read GetProperty write SetProperty; default;
+		function Hint: string; virtual;
 
-      function Move(DX,DY: Integer; Handle: Integer; const Grid: TPoint; Shift: TShiftState): TPoint; virtual;
-      procedure Scale(const ScaleX,ScaleY: Double; const Center: TPoint); virtual;
-      procedure Rotate(const Angle: Double; FlipLR,FlipUD: Boolean; const Center: TPoint); virtual;
-      procedure NotifyMovementDone; virtual;
+		function Move(DX,DY: Integer; Handle: Integer; const Grid: TPoint; Shift: TShiftState): TPoint; virtual;
+		procedure Scale(const ScaleX,ScaleY: Double; const Center: TPoint); virtual;
+		procedure Rotate(const Angle: Double; FlipLR,FlipUD: Boolean; const Center: TPoint); virtual;
+		procedure NotifyMovementDone; virtual;
 
-      procedure AddNotifyObject(Obj: TBaseObject);
-      procedure RemoveNotifyObject(Obj: TBaseObject);
-      function GetLinkPosition(Index: Integer): TPoint;
-      // Notify all FNotifyObjects of movement
-      procedure NotifyMovement;
+		procedure AddNotifyObject(Obj: TBaseObject);
+		procedure RemoveNotifyObject(Obj: TBaseObject);
+		function GetLinkPosition(Index: Integer): TPoint;
+		// Notify all FNotifyObjects of movement
+		procedure NotifyMovement;
 
-      class function Identifier: Integer; virtual; abstract;
-      procedure SaveToStream(Stream: TBaseStream); override;
-      procedure LoadFromStream(Stream: TBaseStream; FileVersion: Integer); reintroduce; virtual;
-    end;
-  TBaseObjectArray = array[0..255] of TBaseObject;
-  PBaseObjectArray = ^TBaseObjectArray;
+		class function Identifier: Integer; virtual; abstract;
+		procedure SaveToStream(Stream: TBaseStream); override;
+		procedure LoadFromStream(Stream: TBaseStream; FileVersion: Integer); reintroduce; virtual;
+	end;
 
-  TBaseObjectList = class(TDynamicObjectList)
-    private
-      FObjects : PBaseObjectArray;
-    public
-      constructor Create;
-      property Objects: PBaseObjectArray read FObjects;
-      function Add(NewObject: TBaseObject): Integer;
+	TBaseObjectArray = array[0..255] of TBaseObject;
+	PBaseObjectArray = ^TBaseObjectArray;
 
-      procedure Draw(Canvas: TCanvas; const CanvasInfo: TCanvasInfo); virtual;
-      procedure DrawSelected(Canvas: TCanvas; const CanvasInfo: TCanvasInfo);
+	TBaseObjectList = class(TDynamicObjectList)
+	private
+		FObjects : PBaseObjectArray;
+	public
+		constructor Create;
+		property Objects: PBaseObjectArray read FObjects;
+		function Add(NewObject: TBaseObject): Integer;
 
-      function GetObjectAt(X,Y: Integer; var CanvasInfo: TCanvasInfo): TBaseObject;
-      function Select(const Rect: TRect; ZBuffer: TBitmap): TBaseObject;
-      procedure SelectAll;
-      procedure DeselectAll;
-      function IndexInSelection(Obj: TBaseObject): Integer;
-      procedure DeleteSelected;
-      procedure MoveSelectedToFront;
-      procedure MoveSelectedToBack;
-      procedure MoveObjectToFront(Obj: TBaseObject);
-      procedure MoveObjectToBack(Obj: TBaseObject);
-      // Recalculate links to other objects
-      procedure ResetLinkIndices;
-      procedure ResetLinkObjects;
-      function SelectCount: Integer;
-      function LastSelected: TBaseObject;
-      // Get rectangle around all objects, including line width
-      function GetBounds: TRect;
-      function GetSelectedBounds: TRect;
-      // Get rectangle around all objects, excluding line width
-      function GetInnerBounds: TRect;
-      // Set property of all selected objects
-      procedure SetMemberProperty(Index: TObjectProperty; Value: Integer; SetAlways: Boolean);
-      function MoveSelected(DX,DY: Integer; Handle: Integer; const Grid: TPoint; Shift: TShiftState): TPoint;
-      procedure RotateSelected(const Angle: Double; FlipLR,FlipUD: Boolean; const Center: TPoint);
-      procedure NotifyMovementDone;
+		procedure Draw(Canvas: TCanvas; const CanvasInfo: TCanvasInfo); virtual;
+		procedure DrawSelected(Canvas: TCanvas; const CanvasInfo: TCanvasInfo);
 
-      procedure SaveToStream(Stream: TBaseStream); override;
-      procedure LoadFromStream(Stream: TBaseStream; FileVersion: Integer); reintroduce; virtual;
-    end;
+		function GetObjectAt(X,Y: Integer; var CanvasInfo: TCanvasInfo): TBaseObject;
+		function Select(const Rect: TRect; ZBuffer: TBitmap): TBaseObject;
+		procedure SelectAll;
+		procedure DeselectAll;
+		function IndexInSelection(Obj: TBaseObject): Integer;
+		procedure DeleteSelected;
+		procedure MoveSelectedToFront;
+		procedure MoveSelectedToBack;
+		procedure MoveObjectToFront(Obj: TBaseObject);
+		procedure MoveObjectToBack(Obj: TBaseObject);
+		// Recalculate links to other objects
+		procedure ResetLinkIndices;
+		procedure ResetLinkObjects;
+		function SelectCount: Integer;
+		function LastSelected: TBaseObject;
+		// Get rectangle around all objects, including line width
+		function GetBounds: TRect;
+		function GetSelectedBounds: TRect;
+		// Get rectangle around all objects, excluding line width
+		function GetInnerBounds: TRect;
+		// Set property of all selected objects
+		procedure SetMemberProperty(Index: TObjectProperty; Value: Integer; SetAlways: Boolean);
+		function MoveSelected(DX,DY: Integer; Handle: Integer; const Grid: TPoint; Shift: TShiftState): TPoint;
+		procedure RotateSelected(const Angle: Double; FlipLR,FlipUD: Boolean; const Center: TPoint);
+		procedure NotifyMovementDone;
 
-  TDiagramLayer = class(TBaseObjectList)
-    public
-      DrawColor : TColor; // Unused, probably with value -1
-      procedure SaveToStream(Stream: TBaseStream); override;
-      procedure LoadFromStream(Stream: TBaseStream; FileVersion: Integer); override;
-      procedure SaveSelected(Stream: TBaseStream);
-      procedure LoadSelected(Stream: TBaseStream);
-    end;
-  TDiagramLayerArray = array[0..255] of TDiagramLayer;
-  PDiagramLayerArray = ^TDiagramLayerArray;
+		procedure SaveToStream(Stream: TBaseStream); override;
+		procedure LoadFromStream(Stream: TBaseStream; FileVersion: Integer); reintroduce; virtual;
+	end;
 
-  TDiagramPage = class(TDynamicObjectList)
-    private
-      FLayers : PDiagramLayerArray;
-      FName : string;
-    public
-      Width, Height : Integer;
-      property RawName: string read FName write FName;
-      function GetName(PageIndex: Integer): string;
-      constructor Create;
-      property Layers: PDiagramLayerArray read FLayers;
-      procedure New(Template: TDiagramPage=nil);
-      procedure DrawPaper(Canvas: TCanvas; const CanvasInfo: TCanvasInfo);
-      procedure Draw(Canvas: TCanvas; const CanvasInfo: TCanvasInfo);
-      procedure SaveToStream(Stream: TBaseStream); override;
-      procedure LoadFromStream(Stream: TBaseStream; FileVersion: Integer); reintroduce; virtual;
-    end;
+	TDiagramLayer = class(TBaseObjectList)
+	public
+		DrawColor : TColor; // Unused, probably with value -1
+		procedure SaveToStream(Stream: TBaseStream); override;
+		procedure LoadFromStream(Stream: TBaseStream; FileVersion: Integer); override;
+		procedure SaveSelected(Stream: TBaseStream);
+		procedure LoadSelected(Stream: TBaseStream);
+	end;
+	
+	TDiagramLayerArray = array[0..255] of TDiagramLayer;
+	PDiagramLayerArray = ^TDiagramLayerArray;
+
+
+
+
+
+	TDiagramPage = class(TDynamicObjectList)
+	private
+		FLayers : PDiagramLayerArray;
+		FName : string;
+	public
+		Width, Height : Integer;
+		property RawName: string read FName write FName;
+		function GetName(PageIndex: Integer): string;
+		constructor Create;
+		property Layers: PDiagramLayerArray read FLayers;
+		procedure New(Template: TDiagramPage=nil);
+		procedure DrawPaper(Canvas: TCanvas; const CanvasInfo: TCanvasInfo);
+		procedure Draw(Canvas: TCanvas; const CanvasInfo: TCanvasInfo);
+		procedure SaveToStream(Stream: TBaseStream); override;
+		procedure LoadFromStream(Stream: TBaseStream; FileVersion: Integer); reintroduce; virtual;
+	end;
   TPageArray = array[0..255] of TDiagramPage;
   PPageArray = ^TPageArray;
 
-  TDiagramHeader = packed record
-                     DDd         : string[3];
-                     FileVersion : Word;
-                   end;
 
+
+
+
+	TDiagramHeader = packed record
+		DDd         : string[3];
+		FileVersion : Word;
+	end;
+
+
+
+
+									 
   TDiagramContainer = class(TDynamicObjectList)
     private
       FPages : PPageArray;
@@ -239,18 +272,26 @@ type
       procedure LoadFromStream(Stream: TBaseStream); override;
     end;
 
-  TPropertyObject = class(TBaseObject)
-    public
-      Valid : TObjectProperties;
-      Values : array[TObjectProperty] of Integer;
-      List : TBaseObjectList;
-      constructor CreateNew(PropertyObject: TBaseObject); override;
-      function GetProperty(Index: TObjectProperty): Integer; override;
-      procedure SetProperty(Index: TObjectProperty; Value: Integer); override;
-      function ValidProperties: TObjectProperties; override;
-      class function Identifier: Integer; override;
-      function CreateCopy: TBaseObject; override;
-    end;
+
+
+
+		
+	TPropertyObject = class(TBaseObject)
+		public
+			Valid : TObjectProperties;
+			Values : array[TObjectProperty] of Integer;
+			List : TBaseObjectList;
+			constructor CreateNew(PropertyObject: TBaseObject); override;
+			function GetProperty(Index: TObjectProperty): Integer; override;
+			procedure SetProperty(Index: TObjectProperty; Value: Integer); override;
+			function ValidProperties: TObjectProperties; override;
+			class function Identifier: Integer; override;
+			function CreateCopy: TBaseObject; override;
+		end;
+
+
+
+
 
 function ExtractObjectName(const ClassName: string): string;
 
@@ -260,15 +301,50 @@ procedure DrawSelectMarker(Canvas: TCanvas; X,Y: Integer);
 // Scale bitmap by 1/Antialising
 procedure ScaleForAntialiasing(var Bitmap: TFastBitmap; Antialiasing: Integer);
 
-var
-  DesignerClipboardFormat : Integer = 0;
+procedure RegisterDesignerClipboardFormat();
 
-procedure RegisterDesignerClipboardFormat;
+
+
+
+
+var
+	DesignerClipboardFormat : Integer = 0;
+
+
+
+
 
 resourcestring
   rsInvalidDiagram = 'Invalid diagram';
   rsPageD = 'Page %d';
   rsFileFromLaterProgramVersion = 'File from later program version';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 implementation
 

@@ -23,109 +23,155 @@ uses
 
 type
   TPanelFrame = class(TCustomControl)
-    private
-      FRenderThemeBackground : Boolean;
-      procedure WMEraseBkgnd(var Msg: TWMEraseBkgnd); message WM_ERASEBKGND;
-      procedure SetRenderThemeBackground(const Value: Boolean);
-    protected
-      FOnPaint : TNotifyEvent;
-      procedure Paint; override;
-    public
-      constructor Create(AOwner: TComponent); override;
-      procedure Clear(Color: TColor=clBtnFace);
-      property DockManager;
-      property Canvas;
-      property WindowHandle;
-    published
-      property RenderThemeBackground: Boolean read FRenderThemeBackground write SetRenderThemeBackground default False; 
-      property OnPaint: TNotifyEvent read FOnPaint write FOnPaint;
-      property Align;
-      property Anchors;
-      property AutoSize;
-      property BevelInner default bvNone;
-      property BevelOuter default bvNone;
-      property BevelWidth;
-      property BorderWidth;
-      property Constraints;
-      property Ctl3D;
-      property UseDockManager default True;
-      property DockSite;
-      property DragCursor;
-      property DragKind;
-      property DragMode;
-      property Enabled;
-      //property Font;
-      //property ParentFont;
-      property ParentBiDiMode;
-      property ParentCtl3D;
-      property ParentShowHint;
-      property PopupMenu;
-      property ShowHint;
-      property TabOrder;
-      property TabStop;
-      property Visible;
-      property OnCanResize;
-      property OnClick;
-      property OnConstrainedResize;
-      property OnContextPopup;
-      property OnDockDrop;
-      property OnDockOver;
-      property OnDblClick;
-      property OnDragDrop;
-      property OnDragOver;
-      property OnEndDock;
-      property OnEndDrag;
-      property OnEnter;
-      property OnExit;
-      property OnGetSiteInfo;
-      property OnMouseDown;
-      property OnMouseMove;
-      property OnMouseUp;
-      property OnResize;
-      property OnStartDock;
-      property OnStartDrag;
-      property OnUnDock;
-    end;
+	private
+		FRenderThemeBackground : Boolean;
+		procedure WMEraseBkgnd(var Msg: TWMEraseBkgnd); message WM_ERASEBKGND;
+		procedure SetRenderThemeBackground(const Value: Boolean);
+	protected
+		FOnPaint : TNotifyEvent;
+		procedure Paint; override;
+	public
+		constructor Create(AOwner: TComponent); override;
+		procedure Clear(Color: TColor=clBtnFace);
+		property DockManager;
+		property Canvas;
+		property WindowHandle;
+	published
+		property RenderThemeBackground: Boolean read FRenderThemeBackground write SetRenderThemeBackground default False; 
+		property OnPaint: TNotifyEvent read FOnPaint write FOnPaint;
+		property Align;
+		property Anchors;
+		property AutoSize;
+		property BevelInner default bvNone;
+		property BevelOuter default bvNone;
+		property BevelWidth;
+		property BorderWidth;
+		property Constraints;
+		property Ctl3D;
+		property UseDockManager default True;
+		property DockSite;
+		property DragCursor;
+		property DragKind;
+		property DragMode;
+		property Enabled;
+		//property Font;
+		//property ParentFont;
+		property ParentBiDiMode;
+		property ParentCtl3D;
+		property ParentShowHint;
+		property PopupMenu;
+		property ShowHint;
+		property TabOrder;
+		property TabStop;
+		property Visible;
+		property OnCanResize;
+		property OnClick;
+		property OnConstrainedResize;
+		property OnContextPopup;
+		property OnDockDrop;
+		property OnDockOver;
+		property OnDblClick;
+		property OnDragDrop;
+		property OnDragOver;
+		property OnEndDock;
+		property OnEndDrag;
+		property OnEnter;
+		property OnExit;
+		property OnGetSiteInfo;
+		property OnMouseDown;
+		property OnMouseMove;
+		property OnMouseUp;
+		property OnResize;
+		property OnStartDock;
+		property OnStartDrag;
+		property OnUnDock;
+	end;
 
-  TDoubleBufferedPanel = class(TPanelFrame)
-    protected
-      FBackBuffer : TBitmap;
-      FBitmapCanvas : TCanvas;
-      FTotalBorder : Integer;
-      procedure Paint; override;
-      procedure Resize; override;
-    public
-      property BackBuffer: TBitmap read FBackBuffer;
-      property BitmapCanvas: TCanvas read FBitmapCanvas;
-      constructor Create(AOwner: TComponent); override;
-      destructor Destroy; override;
-      procedure DrawBuffer;
-      procedure Clear(Color: TColor=clBtnFace; Invalidate: Boolean=True);
-    end;
+	TDoubleBufferedPanel = class(TPanelFrame)
+	protected
+		FBackBuffer : TBitmap;
+		FBitmapCanvas : TCanvas;
+		FTotalBorder : Integer;
+		procedure Paint; override;
+		procedure Resize; override;
+	public
+		property BackBuffer: TBitmap read FBackBuffer;
+		property BitmapCanvas: TCanvas read FBitmapCanvas;
+		constructor Create(AOwner: TComponent); override;
+		destructor Destroy; override;
+		procedure DrawBuffer;
+		procedure Clear(Color: TColor=clBtnFace; Invalidate: Boolean=True);
+	end;
 
-  TFormFrame = class(TStyleForm)
-    private
-      procedure WMEraseBkgnd(var Msg: TWMEraseBkgnd); message WM_ERASEBKGND;
-    protected
-      procedure DoCreate; override;
-    end;
+	TFormFrame = class(TStyleForm)
+	private
+		procedure WMEraseBkgnd(var Msg: TWMEraseBkgnd); message WM_ERASEBKGND;
+	protected
+		procedure DoCreate; override;
+	end;
+
+
+
+
 
 procedure DisableWindowUpdating(Control: TControl; FullScreen: Boolean=False);
 procedure EnableWindowUpdating(Control: TWinControl);
 
 procedure Register;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 implementation
 
-uses Types;
+uses
+	Types;
+
+
+
+
 
 {$R PanelFrame.res}
 
+
+
+
+
 procedure Register;
 begin
-  RegisterComponents('Samples',[TPanelFrame]);
-  RegisterComponents('Samples',[TDoubleBufferedPanel]);
+	RegisterComponents('Samples', [TPanelFrame]);
+  RegisterComponents('Samples', [TDoubleBufferedPanel]);
 end;
+
+
+
+
 
 procedure DesignClearBackground(Canvas: TCanvas; const Rect: TRect);
 begin
@@ -148,6 +194,10 @@ begin
   Canvas.Brush.Bitmap:=nil;{}
 end;
 
+
+
+
+
 //==============================================================================================================================
 // TPanelFrame
 //==============================================================================================================================
@@ -159,17 +209,29 @@ begin
   BevelOuter:=bvNone;
 end;
 
+
+
+
+
 // Prevent panel from clearing background
 procedure TPanelFrame.WMEraseBkgnd(var Msg : TWMEraseBkgnd);
 begin
-  Msg.Result:=LRESULT(False);
+	Msg.Result:=LRESULT(False);
 end;
 
-type
-  TOpenStyleForm = class(TStyleForm)
-    end;
 
-procedure TPanelFrame.Paint;
+
+
+
+type
+	TOpenStyleForm = class(TStyleForm)
+	end;
+
+
+
+
+
+procedure TPanelFrame.Paint();
 var
   Rect: TRect;
   TopColor, BottomColor: TColor;
@@ -211,19 +273,31 @@ begin
   else if csDesigning in ComponentState then DesignClearBackground(Canvas,Rect);
 end;
 
+
+
+
+
 procedure TPanelFrame.SetRenderThemeBackground(const Value: Boolean);
 begin
-  FRenderThemeBackground := Value and (Parent is TStyleForm);
+	FRenderThemeBackground := Value and (Parent is TStyleForm);
 end;
+
+
+
+
 
 procedure TPanelFrame.Clear(Color: TColor);
 begin
-  with Canvas do
-  begin
-    Brush.Color:=Color;
-    FillRect(ClipRect);
-  end;
+	with Canvas do
+	begin
+		Brush.Color:=Color;
+		FillRect(ClipRect);
+	end;
 end;
+
+
+
+
 
 //==============================================================================================================================
 // TDoubleBufferedPanel
@@ -235,11 +309,19 @@ begin
   FBackBuffer:=TBitmap.Create;
 end;
 
+
+
+
+
 destructor TDoubleBufferedPanel.Destroy;
 begin
   inherited;
   FBackBuffer.Free;
 end;
+
+
+
+
 
 procedure TDoubleBufferedPanel.Resize;
 begin
@@ -249,6 +331,10 @@ begin
   FBitmapCanvas:=FBackBuffer.Canvas;
   inherited;
 end;
+
+
+
+
 
 procedure TDoubleBufferedPanel.Paint;
 var
@@ -282,10 +368,18 @@ begin
   else Canvas.Draw(Rect.Left,Rect.Top,FBackBuffer);
 end;
 
+
+
+
+
 procedure TDoubleBufferedPanel.DrawBuffer;
 begin
   Canvas.Draw(FTotalBorder shr 1,FTotalBorder shr 1,FBackBuffer);
 end;
+
+
+
+
 
 procedure TDoubleBufferedPanel.Clear(Color: TColor; Invalidate: Boolean);
 begin
@@ -304,6 +398,10 @@ begin
   if Invalidate then Self.Invalidate;
 end;
 
+
+
+
+
 //==============================================================================================================================
 // TFormFrame
 //==============================================================================================================================
@@ -316,23 +414,39 @@ begin
   {$ENDIF}
 end;
 
+
+
+
+
 procedure TFormFrame.WMEraseBkgnd(var Msg: TWMEraseBkgnd);
 begin
   Msg.Result:=LRESULT(False);
 end;
 
+
+
+
+
 //==============================================================================================================================
 
 type
   TGhostWindow = class(TForm)
-    private
-      procedure WMEraseBkgnd(var Msg: TWMEraseBkgnd); message WM_ERASEBKGND;
-    end;
+	private
+		procedure WMEraseBkgnd(var Msg: TWMEraseBkgnd); message WM_ERASEBKGND;
+	end;
+
+
+
+
 
 procedure TGhostWindow.WMEraseBkgnd(var Msg: TWMEraseBkgnd);
 begin
   Msg.Result:=LRESULT(False);
 end;
+
+
+
+
 
 procedure DisableWindowUpdating(Control: TControl; FullScreen: Boolean);
 var
@@ -342,18 +456,22 @@ begin
   else
   begin
     Rect.TopLeft:=Control.ClientOrigin;
-    Rect.Right:=Rect.Left+Control.Width;
-    Rect.Bottom:=Rect.Top+Control.Height;
+		Rect.Right:=Rect.Left+Control.Width;
+		Rect.Bottom:=Rect.Top+Control.Height;
   end;
   with TGhostWindow.CreateNew(Control) do
   begin             
     BorderStyle:=bsNone;
     BoundsRect:=Rect;
     FormStyle:=fsStayOnTop;
-    Show;
+    Show();
     //ShowWindow(Handle,SW_SHOWNOACTIVATE);
   end;
 end;
+
+
+
+
 
 procedure EnableWindowUpdating(Control: TWinControl);
 var
@@ -362,10 +480,14 @@ begin
   for I:=Control.ComponentCount-1 downto 0 do
     if Control.Components[I] is TGhostWindow then
     begin
-      Control.Components[I].Free;
+      Control.Components[I].Free();
       Break;
     end;
 end;
+
+
+
+
 
 end.
 

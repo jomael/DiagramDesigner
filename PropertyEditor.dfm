@@ -20,15 +20,15 @@ object PropertyEditorForm: TPropertyEditorForm
   TextHeight = 13
   object Panel: TPanelFrame
     Left = 0
-    Top = 415
-    Width = 269
+    Top = 424
+    Width = 277
     Height = 38
     RenderThemeBackground = True
     Align = alBottom
     UseDockManager = False
     TabOrder = 0
     DesignSize = (
-      269
+      277
       38)
     object OkButton: TButton
       Left = 117
@@ -56,8 +56,8 @@ object PropertyEditorForm: TPropertyEditorForm
   object PageControl: TPageControl
     Left = 0
     Top = 0
-    Width = 269
-    Height = 415
+    Width = 277
+    Height = 424
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 1
@@ -66,22 +66,22 @@ object PropertyEditorForm: TPropertyEditorForm
       object ScrollBox1: TScrollBox
         Left = 0
         Top = 0
-        Width = 261
-        Height = 387
+        Width = 269
+        Height = 396
         Align = alClient
         ParentBackground = True
         TabOrder = 0
         object Panel1: TPanel
           Left = 0
           Top = 0
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Name'
           TabOrder = 0
           DesignSize = (
-            257
+            265
             24)
           object NameEdit: TEdit
             Left = 64
@@ -96,14 +96,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel2: TPanel
           Left = 0
           Top = 24
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Text'
           TabOrder = 1
           DesignSize = (
-            257
+            265
             24)
           object TextEdit: TEdit
             Left = 64
@@ -118,14 +118,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel4: TPanel
           Left = 0
           Top = 72
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Vertical text alignment'
           TabOrder = 3
           DesignSize = (
-            257
+            265
             24)
           object TextYAlignBox: TComboBox
             Left = 136
@@ -146,14 +146,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel3: TPanel
           Left = 0
           Top = 48
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Horizontal text alignment'
           TabOrder = 2
           DesignSize = (
-            257
+            265
             24)
           object TextXAlignBox: TComboBox
             Left = 136
@@ -176,14 +176,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel8: TPanel
           Left = 0
           Top = 192
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Height'
           TabOrder = 8
           DesignSize = (
-            257
+            265
             24)
           object HeightEditLabel: TLabel
             Left = 223
@@ -210,14 +210,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel9: TPanel
           Left = 0
           Top = 168
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Width'
           TabOrder = 7
           DesignSize = (
-            257
+            265
             24)
           object WidthEditLabel: TLabel
             Left = 223
@@ -244,7 +244,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel10: TPanel
           Left = 0
           Top = 144
-          Width = 257
+          Width = 265
           Height = 24
           Hint = 'Distance from top left corner'
           Align = alTop
@@ -252,7 +252,7 @@ object PropertyEditorForm: TPropertyEditorForm
           Caption = 'Top'
           TabOrder = 6
           DesignSize = (
-            257
+            265
             24)
           object TopEditLabel: TLabel
             Left = 223
@@ -280,7 +280,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel11: TPanel
           Left = 0
           Top = 120
-          Width = 257
+          Width = 265
           Height = 24
           Hint = 'Distance from top left corner'
           Align = alTop
@@ -288,7 +288,7 @@ object PropertyEditorForm: TPropertyEditorForm
           Caption = 'Left'
           TabOrder = 5
           DesignSize = (
-            257
+            265
             24)
           object LeftEditLabel: TLabel
             Left = 223
@@ -316,7 +316,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel15: TPanel
           Left = 0
           Top = 240
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
@@ -344,7 +344,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel17: TPanel
           Left = 0
           Top = 264
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
@@ -363,7 +363,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object PanelLinks: TPanel
           Left = 0
           Top = 288
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
@@ -390,14 +390,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel19: TPanel
           Left = 0
           Top = 216
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Rotation angle'
           TabOrder = 9
           DesignSize = (
-            257
+            265
             24)
           object Label1: TLabel
             Left = 223
@@ -425,7 +425,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object BoundsPanel: TPanel
           Left = 0
           Top = 312
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
@@ -444,7 +444,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel21: TPanel
           Left = 0
           Top = 96
-          Width = 257
+          Width = 265
           Height = 24
           Hint = 'Margin for non-centered text'
           Align = alTop
@@ -452,12 +452,12 @@ object PropertyEditorForm: TPropertyEditorForm
           Caption = 'Text margin'
           TabOrder = 4
           DesignSize = (
-            257
+            265
             24)
           object MarginEditLabel: TLabel
             Left = 223
             Top = 5
-            Width = 39
+            Width = 37
             Height = 13
             Anchors = [akTop, akRight]
             Caption = #188' points'
@@ -479,7 +479,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object PanelAnchors: TPanel
           Left = 0
           Top = 336
-          Width = 257
+          Width = 265
           Height = 40
           Hint = 'Anchors used when resizing group'
           Align = alTop
@@ -591,22 +591,22 @@ object PropertyEditorForm: TPropertyEditorForm
       object ScrollBox2: TScrollBox
         Left = 0
         Top = 0
-        Width = 261
-        Height = 387
+        Width = 269
+        Height = 396
         Align = alClient
         ParentBackground = True
         TabOrder = 0
         object Panel5: TPanel
           Left = 0
           Top = 0
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Line width'
           TabOrder = 0
           DesignSize = (
-            257
+            265
             24)
           object LineWidthEditLabel: TLabel
             Left = 220
@@ -635,14 +635,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel12: TPanel
           Left = 0
           Top = 24
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Line start'
           TabOrder = 1
           DesignSize = (
-            257
+            265
             24)
           object LineStartBox: TComboBox
             Left = 136
@@ -651,7 +651,7 @@ object PropertyEditorForm: TPropertyEditorForm
             Height = 21
             Style = csDropDownList
             Anchors = [akLeft, akTop, akRight]
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 0
             OnChange = LineStartBoxChange
           end
@@ -670,14 +670,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel13: TPanel
           Left = 0
           Top = 48
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Line end'
           TabOrder = 2
           DesignSize = (
-            257
+            265
             24)
           object LineEndBox: TComboBox
             Left = 136
@@ -686,7 +686,7 @@ object PropertyEditorForm: TPropertyEditorForm
             Height = 21
             Style = csDropDownList
             Anchors = [akLeft, akTop, akRight]
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 0
             OnChange = LineEndBoxChange
           end
@@ -705,14 +705,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel7: TPanel
           Left = 0
           Top = 144
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Line color'
           TabOrder = 4
           DesignSize = (
-            257
+            265
             24)
           object Button1: TButton
             Left = 220
@@ -744,14 +744,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel6: TPanel
           Left = 0
           Top = 168
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Fill color'
           TabOrder = 5
           DesignSize = (
-            257
+            265
             24)
           object Button2: TButton
             Left = 220
@@ -783,14 +783,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel14: TPanel
           Left = 0
           Top = 192
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Text color'
           TabOrder = 6
           DesignSize = (
-            257
+            265
             24)
           object TextColorPanel: TPanel
             Left = 136
@@ -806,7 +806,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel16: TPanel
           Left = 0
           Top = 240
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
@@ -825,14 +825,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel18: TPanel
           Left = 0
           Top = 264
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Layout'
           TabOrder = 8
           DesignSize = (
-            257
+            265
             24)
           object LayoutBox: TComboBox
             Left = 136
@@ -841,7 +841,7 @@ object PropertyEditorForm: TPropertyEditorForm
             Height = 21
             Style = csDropDownList
             Anchors = [akLeft, akTop, akRight]
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 0
             OnChange = LayoutBoxChange
           end
@@ -849,14 +849,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel20: TPanel
           Left = 0
           Top = 72
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Line style'
           TabOrder = 3
           DesignSize = (
-            257
+            265
             24)
           object LineStyleBox: TComboBox
             Left = 136
@@ -886,7 +886,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel22: TPanel
           Left = 0
           Top = 120
-          Width = 257
+          Width = 265
           Height = 24
           Hint = 'Radius of corner arc'
           Align = alTop
@@ -894,7 +894,7 @@ object PropertyEditorForm: TPropertyEditorForm
           Caption = 'Corner radius'
           TabOrder = 9
           DesignSize = (
-            257
+            265
             24)
           object RadiusEditLabel: TLabel
             Left = 223
@@ -921,14 +921,14 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel23: TPanel
           Left = 0
           Top = 288
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify
           Caption = 'Curve type'
           TabOrder = 10
           DesignSize = (
-            257
+            265
             24)
           object CurveTypeBox: TComboBox
             Left = 136
@@ -937,7 +937,7 @@ object PropertyEditorForm: TPropertyEditorForm
             Height = 21
             Style = csDropDownList
             Anchors = [akLeft, akTop, akRight]
-            ItemHeight = 0
+            ItemHeight = 13
             TabOrder = 0
             OnChange = CurveTypeBoxChange
           end
@@ -945,7 +945,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel24: TPanel
           Left = 0
           Top = 96
-          Width = 257
+          Width = 265
           Height = 24
           Hint = 'Radius of corner arc'
           Align = alTop
@@ -953,7 +953,7 @@ object PropertyEditorForm: TPropertyEditorForm
           Caption = 'Opacity'
           TabOrder = 11
           DesignSize = (
-            257
+            265
             24)
           object Label2: TLabel
             Left = 223
@@ -980,7 +980,7 @@ object PropertyEditorForm: TPropertyEditorForm
         object Panel25: TPanel
           Left = 0
           Top = 216
-          Width = 257
+          Width = 265
           Height = 24
           Align = alTop
           Alignment = taLeftJustify

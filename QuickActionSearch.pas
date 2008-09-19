@@ -52,9 +52,13 @@ class procedure TQuickActionSearchForm.Execute(ActionManager: TActionManager);
 var
   Key : Char;
 begin
-  Key:=#0;
-  CheckKey(ActionManager,Key);
+  Key := #0;
+	CheckKey(ActionManager, Key);
 end;
+
+
+
+
 
 end.
 

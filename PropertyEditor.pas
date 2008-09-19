@@ -8,6 +8,10 @@ uses
   LinarBitmap, DesignerSetup, StyleForm, Buttons, FileUtils, WMFLoader, MathUtils,
   PanelFrame;
 
+
+
+
+	
 type
   TPropertyEditorForm = class(TStyleForm)
     Panel: TPanelFrame;
@@ -133,6 +137,10 @@ type
     class function Execute(EditObjects: TBaseObjectList; const Options: TDesignerSetup): Boolean; overload;
   end;
 
+
+
+
+
 resourcestring
   rsDLinkPointsDefined = '%d link points defined';
   rsEditingImage = 'Editing image...';
@@ -143,30 +151,71 @@ resourcestring
   rsLegacy = 'Legacy';
   rsLineSegments = 'Line segments';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 implementation
 
 {$R *.dfm}
 
-uses LineObject, Main, Math, Types, ShapeObject, LinkEditor, FlowchartObject, PNGLoader;
+uses
+	LineObject,
+	Main,
+	Math,
+	Types,
+	ShapeObject,
+	LinkEditor,
+	FlowchartObject,
+	PNGLoader;
+
+
+
+
 
 //==============================================================================================================================
 // TPropertyEditorForm
 //==============================================================================================================================
 
-            // -1  Left
-            //  0  Block left
-            //  1  Right
-            //  2  Center
-            //  3  Block right
+	// -1  Left
+	//  0  Block left
+	//  1  Right
+	//  2  Center
+	//  3  Block right
 const
-  AlignmentToListIndex      : array[TTextAlign] of Integer = (0,3,2,1,4);
-  AlignmentToBlockListIndex : array[TTextAlign] of Integer = (0,0,2,1,2);
+	AlignmentToListIndex      : array[TTextAlign] of Integer = (0,3,2,1,4);
+	AlignmentToBlockListIndex : array[TTextAlign] of Integer = (0,0,2,1,2);
 
   ListIndexToAlignment      : array[0..4] of Integer = (-1,2,1,0,3);
   BlockListIndexToAlignment : array[0..2] of Integer = (0,2,3);
 
 var
   ActivePropertyPage : Integer = 0;
+
+
+
+
 
 class function TPropertyEditorForm.Execute(EditObject: TBaseObject; const Options: TDesignerSetup; ObjectInGroup: Boolean): Boolean;
 var
@@ -491,6 +540,10 @@ begin
   end;
 end;
 
+
+
+
+
 class function TPropertyEditorForm.Execute(EditObjects: TBaseObjectList; const Options: TDesignerSetup): Boolean;
 var
   PropertyObject : TPropertyObject;
@@ -522,6 +575,10 @@ begin
     end;
   end;
 end;
+
+
+
+
 
 procedure TPropertyEditorForm.FormShow(Sender: TObject);
 
@@ -557,6 +614,10 @@ begin
     ActiveControl:=NameEdit;
   end;
 end;
+
+
+
+
 
 procedure TPropertyEditorForm.ColorPanelClick(Sender: TObject);
 var

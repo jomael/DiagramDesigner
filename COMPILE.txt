@@ -4,10 +4,13 @@
 To compile DD:
 	- create the Deletable directory, if it doesn't exist yet (intermediate files go there; Delphi doesn't create it automatically)
 	- open the DiagramDesigner.dpr project and compile
+	- if missing components are reported, press "cancel"
 
 
 
 To modify DD:
 	- create the Deletable directory, if it doesn't exist yet (intermediate files go there; Delphi doesn't create it automatically)
+	- add "FastCode" folder to library path
 	- install components from PanelFrame.pas
+	- install components from ValueEdits.pas
 	- now you can open all forms and modify code
