@@ -3036,8 +3036,8 @@ begin
 		begin
 			if ([ssLeft, ssMiddle]*Shift<>[]) and (SelectStart.X<>Low(Integer)) then
 			begin
-				ScrollBarX.Position := ScrollBarX.Position-MX + SelectStart.X;
-				ScrollBarY.Position := ScrollBarY.Position-MY + SelectStart.Y;
+				ScrollBarX.Position := ScrollBarX.Position - MX + SelectStart.X;
+				ScrollBarY.Position := ScrollBarY.Position + MY - SelectStart.Y;
 				SelectStart := CanvasMousePos;
 			end;
 		end;
@@ -3132,8 +3132,17 @@ begin
 		else // Scroll page
 		begin
 			MousePos := ScreenToClient(MousePos);
-			if (MousePos.X > TemplateScrollBox.Left) then with TemplateScrollBox.VertScrollBar do Position := Position - WheelDelta div 2
-			else ScrollBarY.Position := ScrollBarY.Position - WheelDelta div 2;
+			if (MousePos.X > TemplateScrollBox.Left) then
+			begin
+				with TemplateScrollBox.VertScrollBar do
+				begin
+					Position := Position - WheelDelta div 2
+				end;
+			end
+			else
+			begin
+				ScrollBarY.Position := ScrollBarY.Position + WheelDelta div 2;
+			end;
 		end;
 	end
 end;
